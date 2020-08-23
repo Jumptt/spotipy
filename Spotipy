@@ -1,0 +1,27 @@
+import spotipy
+#Client ID 15e5a267b6f54ea4abd1d84ac7919110
+#Client Secret bf6c8c1b30de49f8a4208bb0dd2b5af5
+from spotipy.oauth2 import SpotifyClientCredentials
+yoasobi_url='spotify:artist:64tJ2EAv1R6UaZqc4iOCyj'
+client_id='15e5a267b6f54ea4abd1d84ac7919110'
+client_secret='bf6c8c1b30de49f8a4208bb0dd2b5af5'
+client_credentials_manager=SpotifyClientCredentials(client_id, client_secret)
+sp=spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+artist=sp.artist(yoasobi_url)
+oral_url='spotify:artist:4rqJz9fE9prZvQd8WsQv6q'
+artist2=sp.artist(oral_url)
+results=sp.artist_albums(oral_url, album_type='album')
+albums = results['items']
+while results['next']:
+    results = spotify.next(results)
+    albums.extend(results['items'])
+
+for album in albums:
+    print(album['name'])
+  
+  
+relate_oral=sp.artist_related_artists(oral_url)
+for i in range(20):
+    print(relate_oral['artists'][i]['name'])
+for i in range(20):
+    print(yoasobi['artists'][i]['name'])
